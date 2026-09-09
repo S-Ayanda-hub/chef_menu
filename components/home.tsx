@@ -1,17 +1,19 @@
-import { useState } from "react";
+import {useContext, useState } from "react";
 import {View, Text, TextInput,TouchableOpacity,StyleSheet, FlatList} from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
+import { MenuContext } from "../App";
 
 export default function Home({ navigation }: { navigation: NativeStackNavigationProp<any> }) {
 
   const [search, setSearch] = useState("");
+  const menuContext = useContext(MenuContext);
+  if(!menuContext) {
+    return null;
+  }
 
-  const menuItems = [
-    {id: "1", name: "Grilled Chicken Salad", price: "R85"},
-    {id: "2", name: "Beef Fillet & Chips", price: "R220"},
-    {id: "3", name: "Chocolate Mousse", price: "R65"},
-  ];
+  const menuItems = menuContext.menuItems;
+
 
   const filteredItems = menuItems.filter((item) =>
     item.name.toLowerCase().includes(search.toLowerCase())
@@ -22,15 +24,12 @@ export default function Home({ navigation }: { navigation: NativeStackNavigation
 
       <View style={styles.screen}>
 
-        {/* HEADER */}
         <View style={styles.header}>
           <Text style={styles.headerText}>
             My Menu
           </Text>
         </View>
 
-
-        {/* SEARCH */}
         <View style={styles.content}>
 
           <TextInput
@@ -41,14 +40,10 @@ export default function Home({ navigation }: { navigation: NativeStackNavigation
             onChangeText={setSearch}
           />
 
-
-          {/* STARTERS */}
           <Text style={styles.sectionTitle}>
-            Starters
+            Menu List
           </Text>
 
-
-          {/* MENU ITEMS */}
           <FlatList
             data={filteredItems}
             keyExtractor={(item) => item.id}
@@ -62,7 +57,7 @@ export default function Home({ navigation }: { navigation: NativeStackNavigation
                 </Text>
 
                 <Text style={styles.price}>
-                  {item.price}
+                  R{item.price}
                 </Text>
 
               </View>
@@ -70,8 +65,6 @@ export default function Home({ navigation }: { navigation: NativeStackNavigation
             )}
           />
 
-
-          {/* ADD BUTTON */}
           <TouchableOpacity
             style={styles.addButton}
             onPress={() => navigation.navigate("Menu")}
@@ -107,7 +100,7 @@ const styles = StyleSheet.create({
 
   header: {
     height: 105,
-    backgroundColor: "#30333F",
+    backgroundColor: "#313855",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 15,

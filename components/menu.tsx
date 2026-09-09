@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import {useContext, useState } from "react";
 import {View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert} from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
 import { Picker } from "@react-native-picker/picker";
-import {NativeStackNavigationProp} from "@react-navigation/native-stack";
+import {NativeStackNavigationProp} from "@react-navigation/native-stack"
+import { MenuContext } from "../App";
 
 
 export default function Menu({ navigation }: { navigation: NativeStackNavigationProp<any> }) {
@@ -11,6 +12,12 @@ export default function Menu({ navigation }: { navigation: NativeStackNavigation
   const [description, setDescription] = useState("");
   const [course, setCourse] = useState("Starters");
   const [price, setPrice] = useState("");
+
+  const menuContext = useContext(MenuContext);
+  if(!menuContext) {
+    return null;
+  }
+  const { menuItems, setMenuItems } = menuContext;
 
 
   const addItem = () => {
@@ -28,6 +35,17 @@ export default function Menu({ navigation }: { navigation: NativeStackNavigation
 
       return;
     }
+
+    const newItem = {
+      id: (menuItems.length + 1).toString(),
+      name: dishName,
+      description: description,
+      course: course,
+      price: price
+    };
+
+    setMenuItems((currentItems) => [...currentItems, newItem]);
+
 
     Alert.alert(
       "Item Added",
@@ -204,7 +222,7 @@ const styles = StyleSheet.create({
 
   header: {
     height: 105,
-    backgroundColor: "#30333F",
+    backgroundColor: "#313855",
     marginTop: 15,
     marginBottom: 25,
 
