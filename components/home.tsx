@@ -74,7 +74,7 @@ export default function Home({ navigation }: { navigation: NativeStackNavigation
           {/* ADD BUTTON */}
           <TouchableOpacity
             style={styles.addButton}
-            onPress={() => navigation.navigate("menu")}
+            onPress={() => navigation.navigate("Menu")}
           >
 
             <Text style={styles.addButtonText}>
