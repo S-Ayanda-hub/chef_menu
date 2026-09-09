@@ -1,5 +1,6 @@
 import { useState } from "react";
-import {View, Text, TextInput,TouchableOpacity,StyleSheet, SafeAreaView, FlatList} from "react-native";
+import {View, Text, TextInput,TouchableOpacity,StyleSheet, FlatList} from "react-native";
+import {SafeAreaView} from "react-native-safe-area-context";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 
 export default function Home({ navigation }: { navigation: NativeStackNavigationProp<any> }) {

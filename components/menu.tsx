@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import {View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, ScrollView, Alert} from "react-native";
+import {View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert} from "react-native";
+import {SafeAreaView} from "react-native-safe-area-context";
 import { Picker } from "@react-native-picker/picker";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 
