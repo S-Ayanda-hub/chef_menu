@@ -182,7 +182,7 @@ export default function Edit({ navigation, route }: NativeStackScreenProps<any>)
               >
                 <Text style={styles.deleteButtonText}>Delete Item</Text>
               </TouchableOpacity>
-              <Text style={styles.hint}>Danger action: shows only in edit mode</Text>
+              
             </>
           )}
         </ScrollView>

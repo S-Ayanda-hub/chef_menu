@@ -44,7 +44,7 @@ export default function Landing({
           <Text style={styles.footerText}>
             Chef's Menu Manager | Portfolio of Evidence
           </Text>
-          <Text style={styles.footerText}>Version | 0.9</Text>
+          <Text style={styles.footerText}>Version 1.0</Text>
         </View>
       </View>
     </SafeAreaView>

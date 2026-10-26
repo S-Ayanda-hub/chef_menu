@@ -74,10 +74,7 @@ export default function Details({
             ))}
           </View>
 
-          <Text style={styles.footnote}>
-            Counts update as menu items are added or removed.
-          </Text>
-
+        
           {/* BACK TO MENU */}
           <TouchableOpacity
             style={styles.backToMenu}
